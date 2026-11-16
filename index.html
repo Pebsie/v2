@@ -1,0 +1,81 @@
+---
+layout: default
+title: Thomas Lock
+body_class: page-home
+---
+{% assign studies = site.case_studies | sort: 'order' %}
+<section class="hero wrap">
+  <p class="label hero__label">Thomas Lock &middot; Essex, UK</p>
+  <h1 class="hero__title">I make apps, games <em>and the tools behind them.</em></h1>
+  <div class="hero__grid">
+    <p class="hero__intro">I'm Tom. I've built apps with Flutter since 2019 and helped launch over 100 projects, as well as founding a startup agency. These days I work as a financial adviser, and in my spare time I'm bringing my MMORPG, <a href="{{ '/work/brawlquest/' | relative_url }}">BrawlQuest</a>, back to life.</p>
+    <dl class="index-card" aria-label="At a glance">
+      <div><dt>Now</dt><dd>Financial adviser</dd></div>
+      <div><dt>Before</dt><dd>App developer, freelance and at Pitchero</dd></div>
+      <div><dt>Building</dt><dd>BrawlQuest 2.0</dd></div>
+      <div><dt>Writes</dt><dd>Dart, Lua, Go, JavaScript</dd></div>
+    </dl>
+  </div>
+</section>
+
+<section class="section wrap" id="work" aria-labelledby="work-h">
+  <div class="section__head">
+    <h2 class="section-label" id="work-h"><span>01</span> Case studies</h2>
+    <a class="more" href="{{ '/work/' | relative_url }}">All work</a>
+  </div>
+  <div class="case-grid">
+    {% for cs in studies %}{% if cs.featured %}
+      {% if forloop.first %}{% include case-card.html cs=cs loading="eager" %}{% else %}{% include case-card.html cs=cs %}{% endif %}
+    {% endif %}{% endfor %}
+  </div>
+</section>
+
+<section class="section wrap" aria-labelledby="apps-h">
+  <div class="section__head">
+    <h2 class="section-label" id="apps-h"><span>02</span> Other apps</h2>
+  </div>
+  {% include other-work.html %}
+</section>
+
+<section class="section wrap about" id="about" aria-labelledby="about-h">
+  <div class="section__head">
+    <h2 class="section-label" id="about-h"><span>03</span> About</h2>
+  </div>
+  <div class="about__grid">
+    <figure class="about__photo">
+      <img src="{{ '/assets/img/people/tom.webp' | relative_url }}" alt="Thomas Lock" width="720" height="960" loading="lazy" decoding="async">
+    </figure>
+    <div class="prose">
+      <p>I started out writing games in Lua and PHP as a teenager, studied Computer Science at the University of Lincoln, and spent the years after building apps for clients, mostly in Flutter.</p>
+      <p>I worked at Pitchero from 2022 to 2023 as the sole app developer on PitcheroGPS, and freelanced for clients, including through Fiverr.</p>
+      <p>{% include todo.html text="a line or two on the move into financial advice, and what you do now" %}</p>
+    </div>
+  </div>
+</section>
+
+<section class="section wrap" aria-labelledby="words-h">
+  <div class="section__head">
+    <h2 class="section-label" id="words-h"><span>04</span> Kind words</h2>
+  </div>
+  <div class="quotes">
+    {% for t in site.data.testimonials %}
+    <figure class="quote">
+      <blockquote><p>{{ t.quote }}</p></blockquote>
+      <figcaption>
+        <img src="{{ t.photo | relative_url }}" alt="" width="44" height="44" loading="lazy" decoding="async">
+        <span><strong>{{ t.name }}</strong><br><a href="{{ t.url }}">{{ t.role }}</a></span>
+      </figcaption>
+    </figure>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="section wrap contact" id="contact" aria-labelledby="contact-h">
+  <div class="section__head">
+    <h2 class="section-label" id="contact-h"><span>05</span> Contact</h2>
+  </div>
+  <p class="contact__big"><a href="mailto:{{ site.email }}">{{ site.email }}</a></p>
+  <ul class="contact__list plain">
+    {% for l in site.contact_links offset: 1 %}<li><span class="label">{{ l.label }}</span> <a href="{{ l.url }}">{{ l.text }}</a></li>{% endfor %}
+  </ul>
+</section>
