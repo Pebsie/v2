@@ -6,7 +6,10 @@ baseurl: "/v2"   # Preview build only. Served at tomlock.me/v2/.
 # Preview: adds a noindex robots tag to every page.
 preview: true
 lang: en-GB
-author: Thomas Lock
+# twitter here is twitter:creator. A plain string renders as @Thomas Lock.
+author:
+  name: Thomas Lock
+  twitter: pebsiee
 email: contact@tomlock.me
 twitter:
   username: pebsiee
@@ -44,6 +47,8 @@ defaults:
       type: case_studies
     values:
       layout: case-study
+      # So an opening heading is not used as the link-preview text.
+      excerpt_separator: "<!--more-->"
   # Older tools that live in this repo. Kept as they are, left out of the sitemap.
   - scope:
       path: "bq-editor"
